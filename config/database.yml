@@ -93,3 +93,5 @@ production:
   database: weblog_production
   username: weblog
   password: <%= ENV['WEBLOG_DATABASE_PASSWORD'] %>
+  encoding: utf8
+  pool: 15
