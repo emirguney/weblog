@@ -25,23 +25,19 @@ development:
   <<: *default
   #database: weblog_development
 
-  adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: postgres
+  username: postgres
 
   # The password associated with the postgres role (username).
-  #password: '1234'
+  password: '1234'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -91,7 +87,10 @@ test:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
+# 
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
 production:
   <<: *default
   database: weblog_production
@@ -99,4 +98,9 @@ production:
   password: <%= ENV['WEBLOG_DATABASE_PASSWORD'] %>
   encoding: utf8
   pool: 15
-  url: <%= ENV["SOME_OTHER_URL"] %>
+  url: <%= ENV['DATABASE_URL'] %> 
+ 
+
+ 
+
+  
