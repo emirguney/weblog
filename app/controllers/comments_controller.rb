@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
     def create
         comment = @post.comments.create! comments_param
-        CommentsMailer.submitted(comment)
+        CommentsMailer.submitted(comment).deliver_later
         CommentsChannel.broadcast(comment)
         
         redirect_to @post
